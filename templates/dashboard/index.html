@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/saas-dashboard.css' %}">
+{% endblock css %}
+
+{% block link %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<script src="{% static 'js/saas-dashboard.js' %}" defer></script>
+{% endblock link %}
+
+{% block content %}
+<section class="dashboard-shell">
+    <div class="dashboard-head">
+        <div>
+            <p class="section-kicker">Modern Finance Workspace</p>
+            <h1>Financial Control Center</h1>
+        </div>
+        <div class="dashboard-actions">
+            <a href="{% url 'add-expense' %}" class="btn btn-primary">Add Expense</a>
+            <a class="btn btn-primary" href="{% url 'add-income' %}">Add Income</a>
+        </div>
+    </div>
+
+    <div class="row g-3 stat-grid">
+        {% include "dashboard/components/stat_card.html" with label="Total Income" value_id="totalIncomeValue" meta="All-time inflow" %}
+        {% include "dashboard/components/stat_card.html" with label="Total Expenses" value_id="totalExpenseValue" meta="All-time outflow" %}
+        {% include "dashboard/components/stat_card.html" with label="Savings" value_id="savingsValue" meta="Income - Expenses" %}
+        {% include "dashboard/components/stat_card.html" with label="Balance" value_id="balanceValue" meta="Current financial runway" %}
+    </div>
+
+    <div class="row g-3 chart-grid">
+        <div class="col-12 col-xl-8">
+            {% include "dashboard/components/chart_card.html" with title="Income vs Expense Trend" chart_id="incomeExpenseChart" %}
+        </div>
+        <div class="col-12 col-xl-4">
+            {% include "dashboard/components/chart_card.html" with title="Category Spending" chart_id="categoryPieChart" %}
+        </div>
+    </div>
+
+    <div class="row g-3 bottom-grid">
+        <div class="col-12 col-xl-8">
+            {% include "dashboard/components/table_card.html" with title="Recent Transactions" %}
+        </div>
+        <div class="col-12 col-xl-4">
+            <div class="saas-card goals-card">
+                <div class="card-head">
+                    <h3>Goals Progress</h3>
+                </div>
+                <div id="goalProgressList" class="goal-list"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="expenseModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content dashboard-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="expenseModalTitle">Add Expense</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="expenseForm">
+                <div class="modal-body">
+                    <input type="hidden" id="expenseId" />
+                    <div class="form-group">
+                        <label for="expenseAmount">Amount</label>
+                        <input type="number" step="0.01" class="form-control" id="expenseAmount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseDate">Date</label>
+                        <input type="date" class="form-control" id="expenseDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseCategory">Category</label>
+                        <input type="text" class="form-control" id="expenseCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenseDescription">Description</label>
+                        <textarea class="form-control" id="expenseDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="alert alert-danger d-none" id="expenseFormError"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="expenseSubmitBtn">Save Expense</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="dashboardLoading" class="dashboard-loading">
+    <div class="spinner-border text-light" role="status"></div>
+    <span>Loading dashboard...</span>
+</div>
+{% endblock content %}
+
+{% block js %}{% endblock js %}

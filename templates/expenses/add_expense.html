@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Add Expense{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'expenses' %}">Expenses</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Add Expense</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            {% include 'partials/_messages.html' %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.amount.id_for_label }}">Amount</label>
+                    {{ form.amount }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">Description</label>
+                    {{ form.description }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">Category (Auto Predicted)</label>
+                    {{ form.category }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.date.id_for_label }}">Date</label>
+                    {{ form.date }}
+                </div>
+                <button type="submit" class="btn btn-success">Save Expense</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block js %}
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return '';
+}
+
+const descriptionField = document.getElementById("descriptionField");
+const categoryField = document.getElementById("categoryField");
+
+if (descriptionField && categoryField) {
+    let debounceTimer;
+    descriptionField.addEventListener("input", function () {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+            const description = descriptionField.value.trim();
+            if (!description) {
+                categoryField.value = "";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("description", description);
+
+            fetch("{% url 'predict-expense-category' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken")
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                categoryField.value = data.predicted_category || "";
+            })
+            .catch(() => {
+                categoryField.value = "";
+            });
+        }, 300);
+    });
+}
+{% endblock js %}

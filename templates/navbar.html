@@ -1,0 +1,33 @@
+<nav class="top-navbar">
+    <div class="top-navbar-inner">
+        <div class="top-navbar-start">
+            <p class="top-navbar-kicker">ExpenseWise</p>
+            <h2 class="top-navbar-title">Dashboard Overview</h2>
+        </div>
+
+        <div class="top-navbar-end">
+            <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">
+                <i class="fa fa-moon-o" aria-hidden="true"></i>
+            </button>
+            {% if request.user.is_authenticated %}
+            <div class="profile-menu">
+                <button type="button" class="profile-trigger" aria-label="Open user menu">
+                    <span class="profile-avatar">{{ request.user.username|slice:":1"|upper }}</span>
+                    <span class="profile-name">{{request.user.username|capfirst}}</span>
+                    <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </button>
+                <div class="dropdown">
+                    <a class="dropdown-content" href="{%url 'account'%}">Profile</a>
+                    <a class="dropdown-content" href="{%url 'preferences'%}">Settings</a>
+                    <a class="dropdown-content" href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="guest-actions">
+                <a href="{%url 'login'%}" class="btn btn-primary btn-sm">Login</a>
+                <a href="{%url 'register'%}" class="btn btn-outline-primary btn-sm">Register</a>
+            </div>
+            {%endif%}
+        </div>
+    </div>
+</nav>

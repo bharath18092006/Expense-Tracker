@@ -1,0 +1,33 @@
+<div class="saas-card table-card">
+    <div class="card-head">
+        <h3>{{ title }}</h3>
+        <div class="table-tools">
+            <input type="text" id="transactionSearch" placeholder="Search description" />
+            <select id="transactionSort">
+                <option value="-date">Newest</option>
+                <option value="date">Oldest</option>
+                <option value="-amount">Amount High-Low</option>
+                <option value="amount">Amount Low-High</option>
+            </select>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th class="text-right">Amount</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="recentTransactionsBody"></tbody>
+        </table>
+    </div>
+    <div class="table-footer">
+        <button class="btn btn-sm btn-outline-primary" id="prevPageBtn">Prev</button>
+        <span id="paginationInfo">Page 1</span>
+        <button class="btn btn-sm btn-outline-primary" id="nextPageBtn">Next</button>
+    </div>
+</div>
