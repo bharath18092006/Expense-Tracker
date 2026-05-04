@@ -141,4 +141,3 @@ def forecast(request):
     }
 
     return render(request, 'expense_forecast/index.html', context)
-git 
