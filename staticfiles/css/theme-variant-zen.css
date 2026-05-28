@@ -1,0 +1,20 @@
+body.theme-zen {
+  --app-bg-start: #f6f8fb;
+  --app-bg-end: #eef3f8;
+  --app-surface: rgba(255, 255, 255, 0.94);
+  --app-surface-strong: #ffffff;
+  --app-border: rgba(30, 41, 59, 0.1);
+  --app-text: #0f172a;
+  --app-heading: #020617;
+  --accent-start: #0ea5e9;
+  --accent-end: #14b8a6;
+  --accent-strong: #0284c7;
+  --bg-orb-1: #dbeafe;
+  --bg-orb-2: #ccfbf1;
+  --sidebar-start: #0369a1;
+  --sidebar-mid: #0f766e;
+  --sidebar-end: #164e63;
+  --row-hover: #ecfeff;
+  --panel-soft: #f1f5f9;
+  --focus-ring: rgba(14, 165, 233, 0.2);
+}

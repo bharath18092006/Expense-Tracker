@@ -1,0 +1,63 @@
+body.theme-carbon {
+  --app-bg-start: #0b1220;
+  --app-bg-end: #121a2b;
+  --app-surface: rgba(16, 24, 39, 0.82);
+  --app-surface-strong: #0f172a;
+  --app-border: rgba(148, 163, 184, 0.2);
+  --app-text: #e2e8f0;
+  --app-heading: #f8fafc;
+  --accent-start: #f59e0b;
+  --accent-end: #ef4444;
+  --accent-strong: #f59e0b;
+  --bg-orb-1: #1d4ed8;
+  --bg-orb-2: #7c2d12;
+  --sidebar-start: #111827;
+  --sidebar-mid: #0f172a;
+  --sidebar-end: #020617;
+  --sidebar-link: rgba(226, 232, 240, 0.88);
+  --sidebar-link-muted: rgba(203, 213, 225, 0.74);
+  --sidebar-link-hover-bg: rgba(148, 163, 184, 0.18);
+  --sidebar-link-hover-border: rgba(148, 163, 184, 0.3);
+  --sidebar-border: rgba(148, 163, 184, 0.2);
+  --on-accent: #0f172a;
+  --row-hover: rgba(30, 41, 59, 0.65);
+  --panel-soft: rgba(30, 41, 59, 0.75);
+  --field-border: rgba(148, 163, 184, 0.4);
+  --focus-ring: rgba(245, 158, 11, 0.25);
+  --success-text: #bbf7d0;
+  --success-bg: rgba(22, 101, 52, 0.45);
+  --success-border: rgba(74, 222, 128, 0.45);
+  --danger-text: #fecaca;
+  --danger-bg: rgba(127, 29, 29, 0.5);
+  --danger-border: rgba(248, 113, 113, 0.5);
+  --warning-text: #fef08a;
+  --warning-bg: rgba(113, 63, 18, 0.52);
+  --warning-border: rgba(250, 204, 21, 0.5);
+}
+
+body.theme-carbon .form-control,
+body.theme-carbon select.form-control,
+body.theme-carbon textarea.form-control {
+  background: rgba(15, 23, 42, 0.9);
+  color: #f8fafc;
+}
+
+body.theme-carbon .breadcrumb-item,
+body.theme-carbon .breadcrumb-item a,
+body.theme-carbon .table thead th,
+body.theme-carbon .table td,
+body.theme-carbon .table th,
+body.theme-carbon .pagination .page-link,
+body.theme-carbon .dropdown-content,
+body.theme-carbon .profile-trigger,
+body.theme-carbon .profile-trigger i,
+body.theme-carbon .top-navbar-kicker,
+body.theme-carbon .top-navbar-title {
+  color: #e2e8f0;
+}
+
+body.theme-carbon .pagination .page-link:hover,
+body.theme-carbon .dropdown-content:hover,
+body.theme-carbon .profile-trigger:hover {
+  background: rgba(51, 65, 85, 0.7);
+}
