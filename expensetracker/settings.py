@@ -27,8 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-#e(g$@-wfcc07s^4avvl4ls)fx1uo-3p=gp9ol5w5g(!0k*0r4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['expense-tracker-5d27.vercel.app', '127.0.0.1', 'localhost']
 
 
 # Application definition
