@@ -11,4 +11,3 @@ joblib
 reportlab
 xhtml2pdf
 openpyxl
-validate-email

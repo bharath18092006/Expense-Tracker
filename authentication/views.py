@@ -3,7 +3,10 @@ from django.views import View
 from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse
-from validate_email import validate_email
+import re
+
+def validate_email(email):
+    return bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
