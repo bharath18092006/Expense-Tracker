@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 import json
 from django.http import JsonResponse
 import re
-
-def validate_email(email):
-    return bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
@@ -19,7 +16,8 @@ from django.contrib import auth
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+def validate_email(email):
+    return bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
 
 class EmailValidationView(View):
     def post(self, request):
