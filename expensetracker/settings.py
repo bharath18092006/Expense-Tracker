@@ -105,7 +105,7 @@ DATABASES = {
     # }
        'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase', # This is where you put the name of the db file. 
+        'NAME': BASE_DIR / 'db.sqlite3', # This is where you put the name of the db file. 
                  # If one doesn't exist, it will be created at migration time.
     }
 }
@@ -189,5 +189,5 @@ EMAIL_HOST_USER = 'bharath567553@gmail.com'
 EMAIL_HOST_PASSWORD = 'mcikakoehsxbmwck'
 DEFAULT_FROM_EMAIL = 'bharath567553@gmail.com'
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
