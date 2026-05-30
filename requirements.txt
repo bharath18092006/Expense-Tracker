@@ -7,3 +7,7 @@ matplotlib
 Pillow
 requests
 djangorestframework
+joblib
+reportlab
+xhtml2pdf
+openpyxl
